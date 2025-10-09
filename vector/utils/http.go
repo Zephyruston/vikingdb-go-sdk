@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Beijing Volcano Engine Technology Co., Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 package utils
 
 import (
@@ -31,7 +34,7 @@ func ParseResponse(resp *http.Response, result interface{}) error {
 	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
 		// 尝试解析错误响应
 		var errResp struct {
-			Code    string    `json:"code"`
+			Code    string `json:"code"`
 			Message string `json:"message"`
 		}
 		if err = ParseJsonUseNumber2(body, &errResp); err == nil && errResp.Message != "" {

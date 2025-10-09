@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Beijing Volcano Engine Technology Co., Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 package model
 
 import (
@@ -14,51 +17,51 @@ const (
 	ErrCodeHTTPRequestFailed ErrorCode = "HTTPRequestFailed"
 
 	// 通用错误
-	ErrCodeUnknown           ErrorCode = "Unknown"
-	ErrCodeInvalidParameter  ErrorCode = "InvalidParameter"
-	ErrCodeServiceUnavailable ErrorCode = "ServiceUnavailable"
-	ErrCodeTimeout           ErrorCode = "Timeout"
+	ErrCodeUnknown              ErrorCode = "Unknown"
+	ErrCodeInvalidParameter     ErrorCode = "InvalidParameter"
+	ErrCodeServiceUnavailable   ErrorCode = "ServiceUnavailable"
+	ErrCodeTimeout              ErrorCode = "Timeout"
 	ErrCodeRequestLimitExceeded ErrorCode = "RequestLimitExceeded"
-	ErrCodeUnauthorized      ErrorCode = "Unauthorized"
-	ErrCodeForbidden         ErrorCode = "Forbidden"
-	ErrCodeNotFound          ErrorCode = "NotFound"
-	
+	ErrCodeUnauthorized         ErrorCode = "Unauthorized"
+	ErrCodeForbidden            ErrorCode = "Forbidden"
+	ErrCodeNotFound             ErrorCode = "NotFound"
+
 	// 集合相关错误
-	ErrCodeCollectionNotExists ErrorCode = "CollectionNotExists"
+	ErrCodeCollectionNotExists     ErrorCode = "CollectionNotExists"
 	ErrCodeCollectionAlreadyExists ErrorCode = "CollectionAlreadyExists"
-	ErrCodeCollectionCreateFailed ErrorCode = "CollectionCreateFailed"
-	ErrCodeCollectionUpdateFailed ErrorCode = "CollectionUpdateFailed"
-	ErrCodeCollectionDeleteFailed ErrorCode = "CollectionDeleteFailed"
-	
+	ErrCodeCollectionCreateFailed  ErrorCode = "CollectionCreateFailed"
+	ErrCodeCollectionUpdateFailed  ErrorCode = "CollectionUpdateFailed"
+	ErrCodeCollectionDeleteFailed  ErrorCode = "CollectionDeleteFailed"
+
 	// 数据相关错误
-	ErrCodeDataInsertFailed   ErrorCode = "DataInsertFailed"
-	ErrCodeDataUpdateFailed   ErrorCode = "DataUpdateFailed"
-	ErrCodeDataDeleteFailed   ErrorCode = "DataDeleteFailed"
-	ErrCodeDataNotFound       ErrorCode = "DataNotFound"
-	
+	ErrCodeDataInsertFailed ErrorCode = "DataInsertFailed"
+	ErrCodeDataUpdateFailed ErrorCode = "DataUpdateFailed"
+	ErrCodeDataDeleteFailed ErrorCode = "DataDeleteFailed"
+	ErrCodeDataNotFound     ErrorCode = "DataNotFound"
+
 	// 检索相关错误
-	ErrCodeSearchFailed       ErrorCode = "SearchFailed"
-	ErrCodeIndexNotExists     ErrorCode = "IndexNotExists"
-	
+	ErrCodeSearchFailed   ErrorCode = "SearchFailed"
+	ErrCodeIndexNotExists ErrorCode = "IndexNotExists"
+
 	// 嵌入相关错误
-	ErrCodeEmbeddingFailed    ErrorCode = "EmbeddingFailed"
-	ErrCodeModelNotFound      ErrorCode = "ModelNotFound"
+	ErrCodeEmbeddingFailed ErrorCode = "EmbeddingFailed"
+	ErrCodeModelNotFound   ErrorCode = "ModelNotFound"
 )
 
 // Error 表示 SDK 错误
 type Error struct {
 	// 错误码
 	Code ErrorCode `json:"code"`
-	
+
 	// 错误消息
 	Message string `json:"message"`
-	
+
 	// HTTP 状态码
 	StatusCode int `json:"status_code,omitempty"`
-	
+
 	// 请求 ID
 	RequestID string `json:"request_id,omitempty"`
-	
+
 	// 原始错误
 	Err error `json:"-"`
 }
@@ -119,22 +122,22 @@ func IsRetryableError(err error) bool {
 	if err == nil {
 		return false
 	}
-	
+
 	sdkErr, ok := err.(*Error)
 	if !ok {
 		return false
 	}
-	
+
 	switch sdkErr.StatusCode {
 	case http.StatusTooManyRequests, http.StatusServiceUnavailable, http.StatusGatewayTimeout:
 		return true
 	}
-	
+
 	switch sdkErr.Code {
 	case ErrCodeServiceUnavailable, ErrCodeTimeout, ErrCodeRequestLimitExceeded:
 		return true
 	}
-	
+
 	return false
 }
 

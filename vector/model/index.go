@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Beijing Volcano Engine Technology Co., Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 package model
 
 import "time"
@@ -6,28 +9,28 @@ import "time"
 type Index struct {
 	// 索引ID
 	ID string `json:"id"`
-	
+
 	// 索引名称
 	Name string `json:"name"`
-	
+
 	// 索引描述
 	Description string `json:"description,omitempty"`
-	
+
 	// 索引类型
 	IndexType string `json:"index_type"`
-	
+
 	// 索引参数
 	IndexParams map[string]interface{} `json:"index_params,omitempty"`
-	
+
 	// 所属集合ID
 	CollectionID string `json:"collection_id"`
-	
+
 	// 所属集合名称
 	CollectionName string `json:"collection_name"`
-	
+
 	// 创建时间
 	CreatedAt time.Time `json:"created_at,omitempty"`
-	
+
 	// 更新时间
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 }
@@ -36,16 +39,16 @@ type Index struct {
 type CreateIndexRequest struct {
 	// 集合名称
 	CollectionName *string `json:"collection_name"`
-	
+
 	// 索引名称
 	Name string `json:"name"`
-	
+
 	// 索引描述
 	Description string `json:"description,omitempty"`
-	
+
 	// 索引类型
 	IndexType string `json:"index_type"`
-	
+
 	// 索引参数
 	IndexParams map[string]interface{} `json:"index_params,omitempty"`
 }
@@ -54,7 +57,7 @@ type CreateIndexRequest struct {
 type CreateIndexResponse struct {
 	// 通用响应
 	CommonResponse
-	
+
 	// 索引信息
 	Index *Index `json:"index,omitempty"`
 }
@@ -63,7 +66,7 @@ type CreateIndexResponse struct {
 type GetIndexRequest struct {
 	// 集合名称
 	CollectionName *string `json:"collection_name"`
-	
+
 	// 索引名称
 	Name string `json:"name"`
 }
@@ -72,7 +75,7 @@ type GetIndexRequest struct {
 type GetIndexResponse struct {
 	// 通用响应
 	CommonResponse
-	
+
 	// 索引信息
 	Index *Index `json:"index,omitempty"`
 }
@@ -81,10 +84,10 @@ type GetIndexResponse struct {
 type ListIndexesRequest struct {
 	// 集合名称
 	CollectionName *string `json:"collection_name"`
-	
+
 	// 分页请求
 	PaginationRequest
-	
+
 	// 名称前缀
 	NamePrefix string `json:"name_prefix,omitempty"`
 }
@@ -93,10 +96,10 @@ type ListIndexesRequest struct {
 type ListIndexesResponse struct {
 	// 通用响应
 	CommonResponse
-	
+
 	// 分页响应
 	PaginationResponse
-	
+
 	// 索引列表
 	Indexes []*Index `json:"indexes,omitempty"`
 }
@@ -105,7 +108,7 @@ type ListIndexesResponse struct {
 type DeleteIndexRequest struct {
 	// 集合名称
 	CollectionName *string `json:"collection_name"`
-	
+
 	// 索引名称
 	Name string `json:"name"`
 }
@@ -120,13 +123,13 @@ type DeleteIndexResponse struct {
 type UpdateIndexRequest struct {
 	// 集合名称
 	CollectionName *string `json:"collection_name"`
-	
+
 	// 索引名称
 	Name string `json:"name"`
-	
+
 	// 索引描述
 	Description string `json:"description,omitempty"`
-	
+
 	// 索引参数
 	IndexParams map[string]interface{} `json:"index_params,omitempty"`
 }
@@ -135,7 +138,7 @@ type UpdateIndexRequest struct {
 type UpdateIndexResponse struct {
 	// 通用响应
 	CommonResponse
-	
+
 	// 索引信息
 	Index *Index `json:"index,omitempty"`
 }

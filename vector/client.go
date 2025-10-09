@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Beijing Volcano Engine Technology Co., Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 package vector
 
 import (
@@ -15,8 +18,8 @@ import (
 
 // client 是 Client 接口的实现
 type client struct {
-	config   *Config
-	httpCli  *http.Client
+	config  *Config
+	httpCli *http.Client
 }
 
 func NewIndexClientWithAkSk(accessKey, secretKey string, indexConfig model.DataAPIIndexBase, opts ...ClientOption) (IndexClient, error) {
@@ -48,7 +51,7 @@ func NewIndexClientWithAkSk(accessKey, secretKey string, indexConfig model.DataA
 	}
 
 	iClient := &indexClient{
-		client: client,
+		client:    client,
 		indexBase: indexConfig,
 	}
 
@@ -81,8 +84,8 @@ func NewCollectionClientWithAkSk(accessKey, secretKey string, collectionConfig m
 		config:  cfg,
 		httpCli: httpCli,
 	}
-	cClient := &collectionClient{	
-		client: client,
+	cClient := &collectionClient{
+		client:         client,
 		collectionBase: collectionConfig,
 	}
 	return cClient, nil
@@ -92,7 +95,7 @@ func NewEmbeddingClientWithAkSk(accessKey, secretKey string, opts ...ClientOptio
 	if accessKey == "" || secretKey == "" {
 		return nil, model.NewInvalidParameterError("accessKey and secretKey cannot be empty")
 	}
-	
+
 	// 创建默认配置
 	cfg := DefaultConfig()
 

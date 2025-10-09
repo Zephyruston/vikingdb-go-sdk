@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Beijing Volcano Engine Technology Co., Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 package vector
 
 import (
@@ -62,7 +65,7 @@ func (i *indexClient) SearchByID(ctx context.Context, request model.SearchByIDRe
 		model.DataAPIIndexBase
 		model.SearchByIDRequest
 	}{
-		DataAPIIndexBase:    i.indexBase,
+		DataAPIIndexBase:  i.indexBase,
 		SearchByIDRequest: request,
 	}
 	err := i.client.doRequest(ctx, http.MethodPost, "/api/vikingdb/data/search/id", req, response, opts...)
@@ -76,7 +79,7 @@ func (i *indexClient) SearchByScalar(ctx context.Context, request model.SearchBy
 		model.DataAPIIndexBase
 		model.SearchByScalarRequest
 	}{
-		DataAPIIndexBase:        i.indexBase,
+		DataAPIIndexBase:      i.indexBase,
 		SearchByScalarRequest: request,
 	}
 	err := i.client.doRequest(ctx, http.MethodPost, "/api/vikingdb/data/search/scalar", req, response, opts...)
@@ -90,7 +93,7 @@ func (i *indexClient) SearchByKeywords(ctx context.Context, request model.Search
 		model.DataAPIIndexBase
 		model.SearchByKeywordsRequest
 	}{
-		DataAPIIndexBase:          i.indexBase,
+		DataAPIIndexBase:        i.indexBase,
 		SearchByKeywordsRequest: request,
 	}
 	err := i.client.doRequest(ctx, http.MethodPost, "/api/vikingdb/data/search/keywords", req, response, opts...)
@@ -104,7 +107,7 @@ func (i *indexClient) SearchByRandom(ctx context.Context, request model.SearchBy
 		model.DataAPIIndexBase
 		model.SearchByRandomRequest
 	}{
-		DataAPIIndexBase:        i.indexBase,
+		DataAPIIndexBase:      i.indexBase,
 		SearchByRandomRequest: request,
 	}
 	err := i.client.doRequest(ctx, http.MethodPost, "/api/vikingdb/data/search/random", req, response, opts...)
@@ -119,7 +122,7 @@ func (i *indexClient) Aggregate(ctx context.Context, request model.AggRequest, o
 		model.AggRequest
 	}{
 		DataAPIIndexBase: i.indexBase,
-		AggRequest:     request,
+		AggRequest:       request,
 	}
 	err := i.client.doRequest(ctx, http.MethodPost, "/api/vikingdb/data/agg", req, response, opts...)
 	return response, err
@@ -133,7 +136,7 @@ func (i *indexClient) Sort(ctx context.Context, request model.SortRequest, opts 
 		model.SortRequest
 	}{
 		DataAPIIndexBase: i.indexBase,
-		SortRequest:    request,
+		SortRequest:      request,
 	}
 	err := i.client.doRequest(ctx, http.MethodPost, "/api/vikingdb/data/sort", req, response, opts...)
 	return response, err

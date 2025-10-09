@@ -1,10 +1,13 @@
+// Copyright (c) 2025 Beijing Volcano Engine Technology Co., Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 package vector
 
 // 认证类型
 const (
 	// AuthTypeAkSk 使用 AK/SK 认证
 	AuthTypeAkSk = "ak_sk"
-	
+
 	// AuthTypeApiKey 使用 API Key 认证
 	AuthTypeApiKey = "api_key"
 )
@@ -19,25 +22,25 @@ const (
 type Config struct {
 	// 服务端点
 	Endpoint string
-	
+
 	// 区域
 	Region string
-	
+
 	// 认证类型
 	AuthType string
-	
+
 	// Access Key
 	AccessKey string
-	
+
 	// Secret Key
 	SecretKey string
-	
+
 	// API Key
 	ApiKey string
-	
+
 	// 超时时间（毫秒）
 	Timeout int
-	
+
 	// 最大重试次数
 	MaxRetries int
 }
@@ -48,7 +51,7 @@ func DefaultConfig() *Config {
 		Endpoint:   "https://api.vector.bytedance.com",
 		Region:     "cn-beijing",
 		AuthType:   AuthTypeAkSk,
-		Timeout:    30000,  // 30 秒
+		Timeout:    30000, // 30 秒
 		MaxRetries: 3,
 	}
 }

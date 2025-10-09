@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Beijing Volcano Engine Technology Co., Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 package test
 
 import (
@@ -5,10 +8,10 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
+
 	"github.com/volcengine/vikingdb-go-sdk/vector"
 	"github.com/volcengine/vikingdb-go-sdk/vector/model"
-
-	"github.com/stretchr/testify/assert"
 )
 
 // Mock a client for testing

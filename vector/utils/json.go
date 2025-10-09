@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Beijing Volcano Engine Technology Co., Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 package utils
 
 import (
@@ -5,7 +8,6 @@ import (
 	"encoding/json"
 	"fmt"
 )
-
 
 func ParseJsonUseNumber2(input []byte, target interface{}) error {
 	var d *json.Decoder
