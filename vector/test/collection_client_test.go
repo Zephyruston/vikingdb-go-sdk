@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Beijing Volcano Engine Technology Co., Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 package test
 
 import (
@@ -5,10 +8,10 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/volcengine/vikingdb-go-sdk/vector"
-	"github.com/volcengine/vikingdb-go-sdk/vector/model"	
-
 	"github.com/stretchr/testify/assert"
+
+	"github.com/volcengine/vikingdb-go-sdk/vector"
+	"github.com/volcengine/vikingdb-go-sdk/vector/model"
 )
 
 // Mock a client for testing
@@ -22,7 +25,7 @@ func newTestCollectionClient(t *testing.T) vector.CollectionClient {
 	opts := []vector.ClientOption{
 		vector.WithEndpoint(endpoint),
 	}
-	
+
 	collectionConfig := model.DataAPICollectionBase{
 		CollectionName: collectionName,
 	}
@@ -38,8 +41,8 @@ func TestCollectionClient_Upsert(t *testing.T) {
 		WriteDataBase: model.WriteDataBase{
 			Data: []model.MapStr{
 				{
-					"ID": 1,
-					"vector": []float64{1.1,2.2,3.4,4.2},
+					"ID":     1,
+					"vector": []float64{1.1, 2.2, 3.4, 4.2},
 				},
 			},
 		},
@@ -56,8 +59,8 @@ func TestCollectionClient_Update(t *testing.T) {
 		WriteDataBase: model.WriteDataBase{
 			Data: []model.MapStr{
 				{
-					"ID": 1,
-					"vector": []float64{1.1,2.2,3.4,4.2},
+					"ID":     1,
+					"vector": []float64{1.1, 2.2, 3.4, 4.2},
 				},
 			},
 		},

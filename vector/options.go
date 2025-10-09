@@ -1,10 +1,13 @@
+// Copyright (c) 2025 Beijing Volcano Engine Technology Co., Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 package vector
 
 // RequestOptions 表示请求选项
 type RequestOptions struct {
 	// 最大重试次数
 	MaxRetries int
-	
+
 	// 请求头
 	Headers map[string]string
 }

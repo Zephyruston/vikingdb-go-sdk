@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Beijing Volcano Engine Technology Co., Ltd.
+// SPDX-License-Identifier: Apache-2.0
+
 package vector
 
 import (
@@ -21,7 +24,7 @@ func (c *collectionClient) Upsert(ctx context.Context, request model.UpsertDataR
 		model.UpsertDataRequest
 	}{
 		DataAPICollectionBase: c.collectionBase,
-		UpsertDataRequest:   request,
+		UpsertDataRequest:     request,
 	}
 	err := c.client.doRequest(ctx, http.MethodPost, "/api/vikingdb/data/upsert", req, response, opts...)
 	return response, err
@@ -35,7 +38,7 @@ func (c *collectionClient) Update(ctx context.Context, request model.UpdateDataR
 		model.UpdateDataRequest
 	}{
 		DataAPICollectionBase: c.collectionBase,
-		UpdateDataRequest:   request,
+		UpdateDataRequest:     request,
 	}
 	err := c.client.doRequest(ctx, http.MethodPost, "/api/vikingdb/data/update", req, response, opts...)
 	return response, err
@@ -49,7 +52,7 @@ func (c *collectionClient) Delete(ctx context.Context, request model.DeleteDataR
 		model.DeleteDataRequest
 	}{
 		DataAPICollectionBase: c.collectionBase,
-		DeleteDataRequest:   request,
+		DeleteDataRequest:     request,
 	}
 	err := c.client.doRequest(ctx, http.MethodPost, "/api/vikingdb/data/delete", req, response, opts...)
 	return response, err
@@ -62,7 +65,7 @@ func (c *collectionClient) Fetch(ctx context.Context, request model.FetchDataInC
 		model.DataAPICollectionBase
 		model.FetchDataInCollectionRequest
 	}{
-		DataAPICollectionBase:      c.collectionBase,
+		DataAPICollectionBase:        c.collectionBase,
 		FetchDataInCollectionRequest: request,
 	}
 	err := c.client.doRequest(ctx, http.MethodPost, "/api/vikingdb/data/fetch_in_collection", req, response, opts...)
