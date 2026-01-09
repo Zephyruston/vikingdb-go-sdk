@@ -6,8 +6,8 @@ The Volc-VikingDB Golang SDK provides a comprehensive suite of tools for interac
 
 ## Features
 
-- **Comprehensive API Coverage**: The SDK provides a complete interface to all the features of Volc-VikingDB, including collections, indexes, and data manipulation.
-- **Specialized Clients**: The SDK offers specialized clients for different functional modules, such as `CollectionClient`, `IndexClient`, and `EmbeddingClient`, to provide a more focused and intuitive development experience.
+- **Comprehensive API Coverage**: The SDK provides a complete interface to all the features of Volc-VikingDB, including collections, indexes, data manipulation, and memory management.
+- **Specialized Clients**: The SDK offers specialized clients for different functional modules, such as `CollectionClient`, `IndexClient`, `EmbeddingClient`, and `MemoryClient`, to provide a more focused and intuitive development experience.
 - **Flexible Configuration**: The SDK supports flexible configuration of clients, including custom settings for endpoints, regions, and credentials.
 - **Automatic Retries**: The SDK automatically retries failed requests due to network issues or server-side transient errors, improving the reliability of applications.
 - **Context-Awareness**: The SDK is context-aware, allowing for better control over request cancellation and timeouts.
@@ -186,6 +186,48 @@ if err != nil {
     // Handle error
 }
 // Process response
+```
+
+### Memory Management (Viking Memory)
+
+The `memory` package provides access to Viking Memory for storing and retrieving conversation sessions, events, and profiles.
+
+```go
+import (
+    "context"
+    "os"
+    "time"
+
+    "github.com/volcengine/vikingdb-go-sdk/memory"
+)
+
+func main() {
+    client, err := memory.New(
+        memory.AuthAPIKey(os.Getenv("MEMORY_API_KEY")),
+        memory.WithEndpoint("http://api-knowledgebase.mlp.cn-beijing.volces.com"),
+    )
+    if err != nil {
+        // Handle error
+    }
+
+    collection := client.Collection("my_memory_collection", "default")
+
+    err = collection.AddSession(
+        context.Background(),
+        "session_001",
+        []memory.Message{
+            {Role: "user", Content: "今天天气怎么样？"},
+            {Role: "assistant", Content: "今天天气晴朗，气温22度。"},
+        },
+        memory.WithMetadata(map[string]interface{}{
+            "default_user_id": "user_01",
+            "time":            time.Now().UnixMilli(),
+        }),
+    )
+    if err != nil {
+        // Handle error
+    }
+}
 ```
 
 ## API Reference
